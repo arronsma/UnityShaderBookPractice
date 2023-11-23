@@ -1,0 +1,4 @@
+repository "UnityShaderBookPractice@mashm3@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"
