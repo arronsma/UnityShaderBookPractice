@@ -1,12 +1,19 @@
 ﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
 Shader "Unity Shaders Book/Chapter 5/Simple Shader" {
+    Properties{
+        // 声明_Color名称的Color类型的属性和材质交互
+        _Color ("Color Tint", Color) = (1.0, 1.0, 1.0, 1.0)
+    }
     SubShader{
         Pass{
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
             
+            // 名称和类型相同的变量与Properties的交互
+            fixed4 _Color;
+
             // 简单的vertex shader和 fragment shader
             //float4 vert(float4 v : POSITION) : SV_Position
             //{
@@ -36,8 +43,12 @@ Shader "Unity Shaders Book/Chapter 5/Simple Shader" {
                 return o;
             }
 
-            fixed4 frag(v2f i):SV_Target {
-                return fixed4(i.color, 1.0);
+            fixed4 frag(v2f i):SV_Target {      
+                // return fixed4(i.color, 1.0);
+                fixed3 c = i.color;
+                // 在原本的颜色上加上材质color的影响
+                c *= _Color.rgb;
+                return fixed4(c, 1.0);
             }
 
 
