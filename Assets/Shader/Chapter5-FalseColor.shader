@@ -16,15 +16,15 @@ Shader "Unity Shaders Book/Chapter 5/False Color"
             fixed4 color : COLOR0;
         };
 
-        // appdata_full¶¨ÒåÔÚUnityCG.cgincÀïÃæ
+        // appdata_fullå®šä¹‰åœ¨UnityCG.cgincé‡Œé¢
         v2f vert (appdata_full v) {
             v2f o;
             o.pos = UnityObjectToClipPos(v.vertex);
 
-            // ¿ÉÊÓ»¯·¨Ïß
+            // å¯è§†åŒ–æ³•çº¿
             o.color = fixed4(v.normal * 0.5 + fixed3(0.5, 0.5, 0.5), 1.0);
 
-            // ¿ÉÊÓ»¯ÇĞÏß·½Ïò
+            // å¯è§†åŒ–åˆ‡çº¿æ–¹å‘
             o.color = fixed4(v.tangent.xyz * 0.5 + fixed3(0.5, 0.5, 0.5), 1.0);
             return o;
         }

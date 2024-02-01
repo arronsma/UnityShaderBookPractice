@@ -42,16 +42,16 @@ Shader "Unity Shaders Book/Chapter 7/Single Texture"
                 float2 uv: TEXCOORD2;
             };
 
-            // ÔÚ¶¥µã×ÅÉ«Æ÷ÖĞ½øĞĞ¼ÆËã
+            // åœ¨é¡¶ç‚¹ç€è‰²å™¨ä¸­è¿›è¡Œè®¡ç®—
             v2f vert(a2v v) {
                 v2f o;
-                // ÆÁÄ»¿Õ¼äÎ»ÖÃ
+                // å±å¹•ç©ºé—´ä½ç½®
                 o.pos = UnityObjectToClipPos(v.vertex);
-                // ÊÀ½ç¿Õ¼ä·¨Ïß
+                // ä¸–ç•Œç©ºé—´æ³•çº¿
                 o.worldNormal = normalize(mul(normalize(v.normal), (float3x3)unity_WorldToObject));
-                // ÊÀ½ç¿Õ¼äÎ»ÖÃ
+                // ä¸–ç•Œç©ºé—´ä½ç½®
                 o.worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-                // ¿¼ÂÇ±ä»»»ñµÃÕæÊµµÄuv×ø±ê
+                // è€ƒè™‘å˜æ¢è·å¾—çœŸå®çš„uvåæ ‡
                 o.uv = TRANSFORM_TEX(v.texcoord, _MainTex);
                 
                 return o;

@@ -29,16 +29,16 @@ Shader "Unity Shaders Book/Chapter 6/Diffuse Vertex Level"
                 fixed3 color : COLOR;
             };
 
-            // ÔÚ¶¥µã×ÅÉ«Æ÷ÖĞ½øĞĞ¼ÆËã
+            // åœ¨é¡¶ç‚¹ç€è‰²å™¨ä¸­è¿›è¡Œè®¡ç®—
             v2f vert(a2v v) {
                 v2f o;
                 o.pos = UnityObjectToClipPos(v.vertex);
 
-                // »·¾³¹âÏà
+                // ç¯å¢ƒå…‰ç›¸
                 fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
-                // Ä£ĞÍ¿Õ¼ä·¨Ïßµ½ÊÀ½ç¿Õ¼äµÄ·¨Ïß
+                // æ¨¡å‹ç©ºé—´æ³•çº¿åˆ°ä¸–ç•Œç©ºé—´çš„æ³•çº¿
                 fixed3 worldNormal = normalize(mul(normalize(v.normal), (float3x3)unity_WorldToObject));
-                // ¹âÔ´, ¼ÙÉèÖ»ÓĞµ¥¹âÔ´²¢ÇÒÊÇÆ½ĞĞ¹â£¬Ö»ĞèÒªÖªµÀ·½Ïò
+                // å…‰æº, å‡è®¾åªæœ‰å•å…‰æºå¹¶ä¸”æ˜¯å¹³è¡Œå…‰ï¼Œåªéœ€è¦çŸ¥é“æ–¹å‘
                 fixed3 worldLight =  normalize(_WorldSpaceLightPos0.xyz);
                 fixed3 diffuse = _LightColor0.xyz * _Diffuse.rgb * saturate(dot(worldNormal, worldLight));
                 o.color = ambient + diffuse;
