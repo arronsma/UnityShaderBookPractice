@@ -91,7 +91,7 @@ Shader "Unity Shaders Book/Chapter 7/Normal Map Tangent Space"
                 tangentNormal.z = sqrt(1.0 - saturate(dot(tangentNormal.xy, tangentNormal.xy)));
 
 
-                fixed3 albedo = tex2D(_MainTex, i.uv).rgb * _Color.rgb;
+                fixed3 albedo = tex2D(_MainTex, i.uv.xy).rgb * _Color.rgb;
                 fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz * albedo;
 
                 // float3 worldNormal = i.worldNormal;

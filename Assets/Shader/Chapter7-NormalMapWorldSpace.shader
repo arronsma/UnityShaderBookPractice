@@ -115,7 +115,7 @@ Shader "Unity Shaders Book/Chapter 7/Normal Map World Space"
                 // 把切线空间的法线转为世界空间
                 fixed3 worldNormal = normalize(half3(dot(i.ToW0.xyz, tangentNormal), dot(i.ToW1.xyz, tangentNormal), dot(i.ToW2.xyz, tangentNormal)));
 
-                fixed3 albedo = tex2D(_MainTex, i.uv).rgb * _Color.rgb;
+                fixed3 albedo = tex2D(_MainTex, i.uv.xy).rgb * _Color.rgb;
                 fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz * albedo;
 
                 // float3 worldNormal = i.worldNormal;
