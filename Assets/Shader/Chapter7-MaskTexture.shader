@@ -53,7 +53,7 @@ Shader "Unity Shaders Book/Chapter 7/Mask Texture"
                 float4 pos: SV_POSITION;
                 fixed3 lightDir : TEXCOORD0;
                 fixed3 viewDir: TEXCOORD1;
-                float4 uv: TEXCOORD2;
+                float2 uv: TEXCOORD2;
             };
 
             // 在顶点着色器中进行计算
